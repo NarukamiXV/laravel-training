@@ -4,6 +4,7 @@ namespace App\Domains\Auth\Http\Controllers\Frontend\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 /**
  * Class TwoFactorAuthenticationController. 
  */
@@ -60,17 +61,17 @@ class TwoFactorAuthenticationController
         $request->validate([
             'code' => 'required|digits:6',
         ]);
-
+    
         // Check if the user has previously authenticated once
         if ($request->session()->has('authenticated_once')) {
             // Redirect the user to the dashboard if already authenticated once
-            return redirect()->route('dashboard')->with('success', 'Two-factor authentication enabled successfully.');
+            return redirect()->route('admin.dashboard')->with('success', 'Two-factor authentication enabled successfully.');
         }
-
+    
         // Mark the user as authenticated once
         $request->session()->put('authenticated_once', true);
-
+    
         // Redirect the user to the dashboard after successful validation
-        return redirect()->route('/dashboard')->with('success', 'Two-factor authentication enabled successfully.');
+        return redirect()->route('admin.dashboard')->with('success', 'Two-factor authentication enabled successfully.');
     }
 }
