@@ -26,8 +26,7 @@ use BaconQrCode\Renderer\ImageRenderer;
 use BaconQrCode\Renderer\Image\SvgImageBackEnd;
 use BaconQrCode\Renderer\Image\PngImageBackEnd;
 use BaconQrCode\Renderer\RendererStyle\RendererStyle;
-
-
+use App\Domains\Auth\Models\User;
 
 /**
  * Class User.
@@ -115,6 +114,15 @@ public function toQr()
         return null; // Or handle the case when email is null or empty
     }
 }
+    /**
+     * Check if two-factor authentication is enabled for the user.
+     *
+     * @return bool
+     */
+    public function hasTwoFactorAuthenticationEnabled()
+    {
+        return !empty($this->two_factor_secret);
+    }
 
     /**
      * The attributes that are mass assignable.
