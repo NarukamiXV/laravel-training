@@ -41,13 +41,12 @@ Route::patch('/user/profile/update', [ProfileController::class, 'update'])->name
 Route::post('/auth/account/2fa/validate-code', [TwoFactorAuthenticationController::class, 'validateCode'])
     ->name('frontend.auth.account.2fa.validateCode');
     Route::get('/user/dashboard', [FrontendDashboardController::class, 'index'])->name('frontend.user.dashboard');
-    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/users',[UserController::class, 'index'])->name('admin.auth.user.index');
     Route::get('/roles',[RoleController::class, 'index'])->name('admin.auth.role.index');
     Route::get('/users/deactivated', [UserController::class, 'deactivated'])->name('admin.auth.user.deactivated');
     Route::get('/users/{user}', [UserController::class, 'show'])->name('admin.auth.user.show');
     Route::get('admin/auth/user/deleted', 'App\Domains\Auth\Http\Controllers\Backend\User\UserController@deletedusers')->name('admin.auth.user.deleted');
-
     Route::get('/users/create', [UserController::class, 'create'])->name('admin.auth.user.create');
     Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('admin.auth.user.edit');
     Route::get('/users/{user}/change-password', [UserController::class, 'changePassword'])->name('admin.auth.user.change-password');
