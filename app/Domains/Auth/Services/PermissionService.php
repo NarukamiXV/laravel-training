@@ -3,7 +3,7 @@
 namespace App\Domains\Auth\Services;
 
 use App\Services\BaseService;
-use App\Domain\Auth\Models\Permission;
+use App\Domains\Auth\Models\Permission;
 
 /**
  * Class PermissionService.
